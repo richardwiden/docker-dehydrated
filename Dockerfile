@@ -1,4 +1,4 @@
-FROM docker.io/alpine:3.11
+FROM docker.io/alpine:3.16.0
 LABEL maintainer="Ross Hendry <rhendry@gmail.com>"
 
 ENV UID=1337 \
@@ -8,9 +8,8 @@ ARG DEHYDRATED_VERSION="0.7.0"
 
 RUN apk add --update --no-cache gcc build-base python3-dev py3-pip libffi-dev libressl-dev curl openssl openssl-dev musl-dev rust cargo bash && \
   curl -L https://github.com/dehydrated-io/dehydrated/archive/v${DEHYDRATED_VERSION}.tar.gz | tar -xz -C / && \
-  mv /dehydrated-${DEHYDRATED_VERSION} /dehydrated && \
-  mkdir -p /dehydrated/hooks /dehydrated/certs /dehydrated/accounts && \
-  pip install --no-cache-dir dns-lexicon && \
+  mv /dehydrated-${DEHYDRATED_VERSION} /opt/dehydrated && \
+  pip3 install --no-cache-dir dns-lexicon && \
   rm -rf /var/cache/apk/* ~/.cache /root/.cargo && \
   apk del --no-cache gcc build-base python3-dev libffi-dev libressl-dev openssl-dev musl-dev rust cargo
 
