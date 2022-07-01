@@ -4,33 +4,13 @@ LABEL maintainer="Ross Hendry <rhendry@gmail.com>"
 ENV UID=1337 \
   GID=1337
 
-RUN apk add --no-cache \
-  --virtual .build-deps \
-  git \
-  python3-dev \
-  libffi-dev \
-  build-base \
-  openssl-dev \
-  py2-pip \
-  && apk add --no-cache \
-  --virtual .runtime-deps \
-  openssl \
-  curl \
-  sed \
-  grep \
-  bash \
-  s6 \
-  su-exec \
-  libxml2-utils \
-  py2-pip \
-  python3 \
-  && mkdir -p /opt \
-  && git clone https://github.com/dehydrated-io/dehydrated.git /opt/dehydrated \
-  && pip3 install setuptools_rust \
-  && pip3 install requests[security] \
-  && pip3 install dns-lexicon \
-  && pip2 install j2cli[yaml] \
-  && apk del .build-deps
+RUN apk add --update --no-cache gcc build-base python3-dev libffi-dev libressl-dev curl openssl openssl-dev musl-dev rust cargo bash && \
+  curl -L https://github.com/dehydrated-io/dehydrated/archive/v${DEHYDRATED_VERSION}.tar.gz | tar -xz -C / && \
+  mv /dehydrated-${DEHYDRATED_VERSION} /dehydrated && \
+  mkdir -p /dehydrated/hooks /dehydrated/certs /dehydrated/accounts && \
+  pip install --no-cache-dir dns-lexicon && \
+  rm -rf /var/cache/apk/* ~/.cache /root/.cargo && \
+  apk del --no-cache gcc build-base python3-dev libffi-dev libressl-dev openssl-dev musl-dev rust cargo
 
 ENV \
   DEHYDRATED_CA="https://acme-staging-v02.api.letsencrypt.org/directory" \
