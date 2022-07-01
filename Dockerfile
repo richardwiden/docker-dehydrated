@@ -6,7 +6,7 @@ ENV UID=1337 \
 
 ARG DEHYDRATED_VERSION="0.7.0"
 
-RUN apk add --update --no-cache gcc build-base python3-dev py3-pip libffi-dev libressl-dev curl openssl openssl-dev musl-dev rust cargo bash && \
+RUN apk add --update --no-cache gcc build-base python3-dev py3-pip libffi-dev libressl-dev curl openssl openssl-dev musl-dev rust cargo bash s6 su-exec && \
   curl -L https://github.com/dehydrated-io/dehydrated/archive/v${DEHYDRATED_VERSION}.tar.gz | tar -xz -C / && \
   mv /dehydrated-${DEHYDRATED_VERSION} /opt/dehydrated && \
   pip3 install --no-cache-dir dns-lexicon && \
