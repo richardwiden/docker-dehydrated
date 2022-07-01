@@ -26,6 +26,7 @@ RUN apk add --no-cache \
   python3 \
   && mkdir -p /opt \
   && git clone https://github.com/dehydrated-io/dehydrated.git /opt/dehydrated \
+  && pip3 install setuptools_rust \
   && pip3 install requests[security] \
   && pip3 install dns-lexicon \
   && pip2 install j2cli[yaml] \
