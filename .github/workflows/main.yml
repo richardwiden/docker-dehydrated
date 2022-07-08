@@ -11,9 +11,9 @@ on:
       - 'main'
 env:
   # Use docker.io for Docker Hub if empty
-   REGISTRY: docker.io
-   # github.repository as <account>/<repo>
-   IMAGE_NAME: richardwiden/mimersql
+  REGISTRY: docker.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: richardwiden/mimersql
 jobs:
   build-container:
     runs-on: ubuntu-latest
