@@ -2,9 +2,7 @@
 
 [![Stars](https://img.shields.io/docker/stars/richardwiden/dehydrated.svg)](https://hub.docker.com/r/richardwiden/dehydrated/) 
 [![Pulls](https://img.shields.io/docker/pulls/richardwiden/dehydrated.svg)](https://hub.docker.com/r/richardwiden/dehydrated/) 
-[![Automated](https://img.shields.io/docker/automated/richardwiden/dehydrated.svg)](https://hub.docker.com/r/richardwiden/dehydrated/) 
-[![Build Status](https://img.shields.io/docker/build/richardwiden/dehydrated.svg)](https://hub.docker.com/r/richardwiden/dehydrated/)
-![example workflow](https://github.com/richardwiden/docker-dehydrated/actions/workflows/main.yml/badge.svg)
+![Push to docker](https://github.com/richardwiden/docker-dehydrated/actions/workflows/main.yml/badge.svg)
 We use this internally for automating our certificate management using [dehydrated](https://github.com/lukas2511/dehydrated). We do not support this further than needed for our usage, but feel free to use it if you want.
 
 ## Usage
