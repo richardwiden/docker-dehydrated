@@ -13,7 +13,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: docker.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: richardwiden/mimersql
+  IMAGE_NAME: richardwiden/dehydrated
 jobs:
   build-container:
     runs-on: ubuntu-latest
